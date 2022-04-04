@@ -5,35 +5,15 @@
 #include <functional>
 #include <iostream>
 #include <utility>
+#include <cstring>
 #include <limits>
-
-template<typename T>
-class Flower_Iterator
-{
-
-public:
-  Flower_Iterator(T*);
-  Flower_Iterator(const Flower_Iterator<T>& it) = default;
-
-  T* get_ptr() const;
-
-  bool operator!=(const Flower_Iterator<T>&) const;
-  bool operator==(const Flower_Iterator<T>&) const;
-
-  Flower_Iterator<T>& operator--();
-  Flower_Iterator<T>& operator++();
-
-  T& operator*();
-  T* operator->();
-
-public:
-  T* flower_ptr;
-
-};
 
 template<typename T> 
 class Flower_Vector
 {
+public:
+  typedef T * iterator;
+  typedef const T* const_iterator;
 
 public: 
   /**
@@ -73,11 +53,17 @@ public:
   ~Flower_Vector();
 
 public: 
-  Flower_Iterator<T> begin();
-  Flower_Iterator<T> end();
-
-  Flower_Iterator<const T> const_begin();
-  Flower_Iterator<const T> const_end();
+  /**
+   * @brief Iterators
+   */
+  iterator begin();
+  iterator end();
+  
+  /**
+   * @brief const Iterators
+   */
+  const_iterator const_begin() const;
+  const_iterator const_end() const;
 
 public: 
   /**
@@ -144,6 +130,11 @@ public:
    */
   void flower_clear(); 
 
+  /**
+   * @brief Remove the element at given position
+   */
+  iterator erase(const_iterator);
+
 public: 
   /**
    * @brief      Array indexer operator.
@@ -160,6 +151,8 @@ public:
    * @return     The result of the assignment
    */
   Flower_Vector<T> operator=(const Flower_Vector<T>&);
+
+  Flower_Vector<T> operator=(std::initializer_list<T>&);
   /**
    * @brief      Compare two vectors operator
    *

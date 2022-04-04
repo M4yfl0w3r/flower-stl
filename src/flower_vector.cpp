@@ -1,56 +1,6 @@
 #include "../include/flower_vector.h"
 
 template <typename T>
-Flower_Iterator<T>::Flower_Iterator(T* ptr) : flower_ptr{ptr} 
-{
-
-}
-
-template <typename T>
-T* Flower_Iterator<T>::get_ptr() const
-{
-  return flower_ptr;
-}
-
-template <typename T>
-bool Flower_Iterator<T>::operator!=(const Flower_Iterator<T>& it) const
-{
-  return flower_ptr != it.get_ptr();
-}
-
-template <typename T>
-bool Flower_Iterator<T>::operator==(const Flower_Iterator<T>& it) const
-{
-  return flower_ptr == it.get_ptr();
-}
-
-template <typename T>
-Flower_Iterator<T>& Flower_Iterator<T>::operator--()
-{
-  --flower_ptr;
-  return *this;
-}
-
-template <typename T>
-Flower_Iterator<T>& Flower_Iterator<T>::operator++()
-{
-  ++flower_ptr;
-  return *this;
-}
-
-template <typename T>
-T& Flower_Iterator<T>::operator*()
-{
-  return *flower_ptr;
-}
-
-template <typename T>
-T* Flower_Iterator<T>::operator->()
-{
-  return flower_ptr;
-}
-
-template <typename T>
 Flower_Vector<T>::Flower_Vector() 
   : size{0}, capacity{2}, flower_buffer{nullptr}
 {
@@ -112,28 +62,28 @@ Flower_Vector<T>::~Flower_Vector()
   }
 }
 
-template <typename T>
-Flower_Iterator<T> Flower_Vector<T>::begin()
+template<typename T>
+typename Flower_Vector<T>::iterator Flower_Vector<T>::begin()
 {
-  return Flower_Iterator<T>(&flower_buffer[0]);
-}
- 
-template <typename T>
-Flower_Iterator<T> Flower_Vector<T>::end()
-{
-  return Flower_Iterator<T>(&flower_buffer[size]);
+  return flower_buffer;
 }
 
-template <typename T>
-Flower_Iterator<const T> Flower_Vector<T>::const_begin()
+template<typename T>
+typename Flower_Vector<T>::const_iterator Flower_Vector<T>::const_begin() const
 {
-  return Flower_Iterator<const T>(&flower_buffer[0]);
+  return flower_buffer;
 }
 
-template <typename T>
-Flower_Iterator<const T> Flower_Vector<T>::const_end()
+template<typename T>
+typename Flower_Vector<T>::iterator Flower_Vector<T>::end()
 {
-  return Flower_Iterator<const T>(&flower_buffer[size]);
+  return flower_buffer + size;
+}
+
+template<typename T>
+typename Flower_Vector<T>::const_iterator Flower_Vector<T>::const_end() const
+{
+  return flower_buffer + size;
 }
 
 template <typename T>
@@ -284,6 +234,16 @@ void Flower_Vector<T>::flower_clear()
   delete [] flower_buffer;   
   capacity = 2;
   size = 0;
+}
+
+template <typename T>
+typename Flower_Vector<T>::iterator Flower_Vector<T>::erase(typename Flower_Vector<T>::const_iterator it)
+{
+  iterator _it = &flower_buffer[it - flower_buffer];
+  _it -> ~T();
+  memmove(_it, _it + 1, (size - (it - flower_buffer) - 1) * sizeof(T));
+  size--;
+  return _it;
 }
 
 template <typename T>
