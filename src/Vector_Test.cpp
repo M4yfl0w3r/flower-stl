@@ -29,7 +29,6 @@ TEST(Constructor_Test, is_init_list_constructor_working)
   EXPECT_EQ(4, vec.flower_capacity());
 }
 
-/*
 TEST(Constructor_Test, is_move_constructor_working)
 {
   Flower_Vector<int> vec {1, 2, 3, 4};
@@ -49,7 +48,6 @@ TEST(Constructor_Test, is_copy_constructor_working)
   EXPECT_EQ(4, vec_to_test.flower_size());
   EXPECT_EQ(4, vec_to_test.flower_capacity());
 }
-*/
 
 TEST(Add_Element_Test, is_single_element_push_back_working)
 {
@@ -73,7 +71,6 @@ TEST(Add_Element_Test, is_init_list_push_back_working)
   EXPECT_FALSE(vec.flower_empty());
 }
 
-/*
 TEST(Add_Element_Test, is_init_list_emplace_back_working)
 {
   Flower_Vector<int> vec;
@@ -84,7 +81,6 @@ TEST(Add_Element_Test, is_init_list_emplace_back_working)
   EXPECT_EQ(4, vec.flower_capacity());
   EXPECT_FALSE(vec.flower_empty());
 }
-*/
 
 TEST(Removing_elements, is_pop_back_working)
 {
@@ -119,6 +115,17 @@ TEST(Removing_elements, is_erase_working)
   EXPECT_EQ(3, vec.flower_size());
 }
 
+TEST(Removing_elements, is_shrink_elements_working)
+{
+  Flower_Vector<int> vec({1, 2, 3});
+  
+  EXPECT_FALSE(vec.flower_size() == vec.flower_capacity());
+
+  vec.shrink_to_fit();
+
+  EXPECT_EQ(vec.flower_size(), vec.flower_capacity());
+}
+
 TEST(Operators, is_brackets_operator_working)
 {
   Flower_Vector<int> vec({1, 2, 3, 4});
@@ -135,6 +142,21 @@ TEST(Operators, is_compare_operator_working)
 
   EXPECT_TRUE(vec1 == vec2);
 }
+
+TEST(Operators, is_copy_assignment_operator_working)
+{
+  Flower_Vector<int> vec1({1, 2, 3, 4, 5});
+
+  Flower_Vector<int> vec2;
+
+  vec1 = vec2;
+
+  EXPECT_EQ(vec1.flower_size(), vec2.flower_size());
+}
+
+
+
+
 
 int main(int argc, char* argv[])
 {

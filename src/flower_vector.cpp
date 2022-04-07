@@ -160,7 +160,7 @@ Flower_Vector<T> Flower_Vector<T>::operator=(const Flower_Vector<T>& other)
 
   for (int i = 0; i < size; i++)
   {
-      flower_buffer[i] = other._array[i];
+      flower_buffer[i] = other.flower_buffer[i];
   }
 
   return *this;
