@@ -3,6 +3,7 @@
 
 int main()
 {
+  std::cout << "hejka\n";
 
   return 0;
 }
