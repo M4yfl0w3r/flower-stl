@@ -158,7 +158,7 @@ Flower_Vector<T> Flower_Vector<T>::operator=(const Flower_Vector<T>& other)
   size = other.size;
   flower_buffer = new int[size];
 
-  for (int i = 0; i < size; i++)
+  for (std::size_t i = 0; i < size; i++)
   {
       flower_buffer[i] = other.flower_buffer[i];
   }
