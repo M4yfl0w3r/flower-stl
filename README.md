@@ -1,6 +1,6 @@
 ## Flower Vector
 
-Flower vector is my (relative) simple implementation of std::vector for the learning purpose
+Flower vector is my (relative) simple implementation of std::vector (key elements) for the learning purpose
 
 #### Tests that fail 
 - MoveConstructor
