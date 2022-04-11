@@ -231,8 +231,11 @@ void Flower_Vector<T>::flower_pop_back()
 template <typename T>
 void Flower_Vector<T>::flower_clear()
 {
-  delete [] flower_buffer;   
-  capacity = 2;
+  for (std::size_t i = 0; i < flower_size(); i++)
+  {
+    flower_buffer[i].~T();
+  }
+
   size = 0;
 }
 

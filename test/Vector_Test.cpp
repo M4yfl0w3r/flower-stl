@@ -141,7 +141,7 @@ TEST_F(VectorTest, PopBack)
   EXPECT_EQ(v2.flower_size(), tmp-1);
 }
 
-TEST_F(VectorTest, DISABLED_Clear)
+TEST_F(VectorTest, Clear)
 {
   EXPECT_FALSE(v2.flower_empty());
   v2.flower_clear();

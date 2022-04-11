@@ -26,7 +26,7 @@ public:
    *
    * @param[in]   First element 
    */
-  Flower_Vector(T);
+  explicit Flower_Vector(T);
 
   /**
    * @brief Copy constructor
