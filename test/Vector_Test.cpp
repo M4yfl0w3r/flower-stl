@@ -29,15 +29,18 @@ TEST(Constructors, CopyConstructor)
   EXPECT_EQ(4, vec_to_test.flower_size());
 }
 
-TEST(Constructors, DISABLED_MoveConstructor)
+TEST(Constructors, MoveConstructor)
 {
   Flower_Vector<int> vec {1, 2, 3, 4};
 
+  std::size_t tmp_size = vec.flower_size();
+  std::size_t tmp_cap = vec.flower_size();
+
   Flower_Vector<int> vec_to_test = std::move(vec);
 
-  EXPECT_EQ(4, vec_to_test.flower_size());
+  EXPECT_EQ(tmp_size, vec_to_test.flower_size());
+  EXPECT_EQ(tmp_cap, vec_to_test.flower_capacity());
 }
-
 
 class VectorTest : public ::testing::Test 
 {

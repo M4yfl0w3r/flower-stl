@@ -29,14 +29,13 @@ Flower_Vector<T>::Flower_Vector(const Flower_Vector<T>& other)
 
 template <typename T>
 Flower_Vector<T>::Flower_Vector(Flower_Vector<T>&& other) 
-  : size{std::exchange(size, other.size)}, capacity{std::exchange(capacity, other.capacity)}
+  : size{other.size}, 
+    capacity{other.capacity}, 
+    flower_buffer{new T[other.size]}
 {
-  flower_buffer = new T[size];
-
-  for (std::size_t i = 0; i < size; i++) 
-  {
-    flower_buffer[i] = std::move(other.flower_buffer[i]);
-  }
+  other.flower_buffer = nullptr;
+  other.size = 0;
+  other.capacity = 0;
 }
 
 template <typename T>
