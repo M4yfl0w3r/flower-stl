@@ -1,5 +1,7 @@
-## Flower Vector
+## Flower STL
 
-Flower vector is my (relative) simple implementation of std::vector (key elements) for the learning purpose
+My STL-stuff implementation
 
+- std::vector - key elements (flower-vector)
+- stack (flower-stack) 
 
