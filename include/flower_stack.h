@@ -8,7 +8,7 @@ template<typename T>
 struct Node
 {
 	T element;
-    std::shared_ptr< Node<T> > next;	
+  std::shared_ptr< Node<T> > next;	
 };
 
 template<typename T>
@@ -22,5 +22,4 @@ struct Stack
 	bool stack_empty();
 	T get_top();
 };
-
 
