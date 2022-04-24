@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.1)
 
-set(This Vector_Test)
+set(This Tests)
 
 set (Sources Vector_Test.cpp)
 

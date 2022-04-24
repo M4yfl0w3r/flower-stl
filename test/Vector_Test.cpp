@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 
-#include "../flower_vector.h"
-#include "../flower_vector.cpp"
+#include "../include/flower_vector.h"
+#include "../src/flower_vector.cpp"
 
 TEST(Constructors, OneArgumentConstructor)
 {

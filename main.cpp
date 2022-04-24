@@ -1,9 +1,8 @@
-#include "flower_vector.h"
-#include "flower_vector.cpp"
+#include "include/flower_vector.h"
+#include "include/flower_stack.h"
 
 int main()
 {
-  std::cout << "hejka\n";
 
   return 0;
 }

@@ -16,11 +16,13 @@ enable_testing()
 add_subdirectory(/usr/src/googletest build)
 
 set (Headers 
-  flower_vector.h
+  include/flower_vector.h
+  include/flower_stack.h
 )
 
 set (Sources 
-  flower_vector.cpp
+  src/flower_vector.cpp
+  src/flower_stack.cpp
   main.cpp
 )
 
