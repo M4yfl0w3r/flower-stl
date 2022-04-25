@@ -18,11 +18,12 @@ add_subdirectory(/usr/src/googletest build)
 set (Headers 
   include/flower_vector.h
   include/flower_stack.h
+  include/flower_heap.h
 )
-
 set (Sources 
   src/flower_vector.cpp
   src/flower_stack.cpp
+  src/flower_heap.cpp
 )
 
 add_library(${PROJECT_NAME} STATIC ${Sources} ${Headers})
