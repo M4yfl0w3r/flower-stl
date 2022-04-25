@@ -31,7 +31,7 @@ private:
   auto get_parent(std::size_t) const -> std::size_t;
   auto flower_heapify(std::size_t) -> void;
 
-public:
+private:
   std::vector<int> m_elements;
   std::size_t m_size;
   std::size_t m_capacity;
