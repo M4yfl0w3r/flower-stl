@@ -23,7 +23,6 @@ set (Headers
 set (Sources 
   src/flower_vector.cpp
   src/flower_stack.cpp
-  main.cpp
 )
 
 add_library(${PROJECT_NAME} STATIC ${Sources} ${Headers})
