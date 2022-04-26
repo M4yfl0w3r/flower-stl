@@ -35,6 +35,14 @@ auto Flower_Max_Heap::flower_insert(int el) -> void
     i = get_parent(i);
   }
 }
+  
+auto Flower_Max_Heap::flower_insert(std::initializer_list<int> list) -> void
+{
+  for (const auto& el : list)
+  {
+    flower_insert(el);
+  }
+}
 
 auto Flower_Max_Heap::flower_extract_max() -> int
 {
@@ -75,6 +83,36 @@ auto Flower_Max_Heap::flower_heap_sort() -> std::vector<int>
   return sorted;
 }
 
+auto Flower_Max_Heap::flower_get_item(std::size_t index) const -> int 
+{
+  return m_elements[index];
+}
+
+auto Flower_Max_Heap::flower_search(int value) const -> std::optional<std::size_t>
+{
+  for (std::size_t i = 0; i < m_size; i++)
+  {
+    if (value == m_elements[i]) return i;
+  }
+
+  return {};
+}
+
+auto Flower_Max_Heap::flower_is_empty() const -> bool 
+{
+  return m_size == 0;
+}
+
+auto Flower_Max_Heap::get_capacity() const -> std::size_t
+{
+  return m_capacity;
+}
+
+auto Flower_Max_Heap::get_size() const -> std::size_t
+{
+  return m_size;
+}
+
 auto Flower_Max_Heap::flower_heapify(std::size_t index) -> void
 {
   std::size_t left_child = get_left_child(index);
@@ -111,5 +149,17 @@ auto Flower_Max_Heap::get_right_child(std::size_t index) const -> std::size_t
 auto Flower_Max_Heap::get_parent(std::size_t index) const -> std::size_t
 {
   return (index - 1) / 2;
+}
+
+std::ostream& operator<<(std::ostream& stream, const Flower_Max_Heap& heap)
+{
+  for (const auto& el : heap.m_elements)
+  {
+    stream << el << ' ';
+  }
+  
+  stream << '\n';
+
+  return stream;
 }
 

@@ -2,9 +2,8 @@
 
 #include <iostream>
 #include <vector>
+#include <optional>
 
-// Binary max heap
-// The root note is the largest element in the tree
 class Flower_Max_Heap
 {
 
@@ -17,13 +16,16 @@ public:
 
 public:
   auto flower_insert(int) -> void;
+  auto flower_insert(std::initializer_list<int>) -> void;
   auto flower_extract_max() -> int;  
   auto flower_heap_sort() -> std::vector<int>;
-
-/*
   auto flower_get_item(std::size_t) const -> int;
-  auto search(int) const -> std::size_t;
-*/
+  auto flower_search(int) const -> std::optional<std::size_t>; 
+  auto flower_is_empty() const -> bool;
+
+public:
+  auto get_capacity() const -> std::size_t;
+  auto get_size() const -> std::size_t;
 
 private:
   auto get_left_child(std::size_t) const -> std::size_t;
@@ -36,18 +38,7 @@ private:
   std::size_t m_size;
   std::size_t m_capacity;
 
-  friend std::ostream& operator<<(std::ostream& stream, const Flower_Max_Heap& heap);
+  friend std::ostream& operator<<(std::ostream&, const Flower_Max_Heap&);
 };
 
-// make a cute tree
-std::ostream& operator<<(std::ostream& stream, const Flower_Max_Heap& heap)
-{
-  for (const auto& el : heap.m_elements)
-  {
-    stream << el << ' ';
-  }
-  
-  stream << '\n';
-
-  return stream;
-}
+std::ostream& operator<<(std::ostream&, const Flower_Max_Heap&);
