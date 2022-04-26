@@ -2,7 +2,11 @@ cmake_minimum_required(VERSION 3.1)
 
 set(This Tests)
 
-set (Sources Vector_Test.cpp Stack_Test.cpp)
+set (Sources 
+  Vector_Test.cpp 
+  Stack_Test.cpp
+  Heap_Test.cpp
+)
 
 add_executable(${This} ${Sources})
 
