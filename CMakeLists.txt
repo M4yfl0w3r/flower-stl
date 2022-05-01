@@ -1,33 +1,33 @@
-cmake_minimum_required(VERSION 3.22.3)
+cmake_minimum_required(VERSION 3.13)
 
-set(This main)
-
-project (${This} CXX)
+project(flower-stl)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_FLAGS "-Wall")
-set(PROJECT_LINK_DIRECTORY ${PROJECT_SOURCE_DIR})
 
-add_compile_options(${CMAKE_CXX_FLAGS})
+include(FetchContent)
+FetchContent_Declare(googletest
+    GIT_REPOSITORY https://github.com/google/googletest.git
+    GIT_TAG release-1.11.0)
+FetchContent_GetProperties(googletest)
 
-enable_testing()
+if (NOT googletest_POPULATED)
+  FetchContent_Populate(googletest)
+  add_subdirectory(${googletest_SOURCE_DIR} ${googletest_BUILD_DIR})
+endif()
 
-add_subdirectory(/usr/src/googletest build)
-
-set (Headers 
-  include/flower_vector.h
-  include/flower_stack.h
-  include/flower_heap.h
-)
-set (Sources 
-  src/flower_vector.cpp
+add_library(flower_stl STATIC 
+  src/flower_vector.cpp 
   src/flower_stack.cpp
   src/flower_heap.cpp
 )
 
-add_library(${PROJECT_NAME} STATIC ${Sources} ${Headers})
+add_executable(vector_tst tst/Vector_Test.cpp)
+add_executable(heap_tst tst/Heap_Test.cpp)
+add_executable(stack_tst tst/Stack_Test.cpp)
 
-add_subdirectory(test)
-
+target_link_libraries(vector_tst gtest_main gmock_main)
+target_link_libraries(heap_tst gtest_main gmock_main)
+target_link_libraries(stack_tst gtest_main gmock_main)
 
