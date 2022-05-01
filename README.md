@@ -1,9 +1,36 @@
 ## Flower STL
 
-My STL-stuff implementation
+My STL-stuff implementation of
+- std::vector - key elements (flower_vector)
+- stack (flower_stack) 
+- heap - key elements (flower_heap)
 
-#### std::vector - key elements (flower_vector)
+### How to run
 
-#### stack (flower_stack) 
+```
+git clone https://github.com/M4yfl0w3r/flower-stl.git
 
-#### heap - key elements (flower_heap)
+cd flower-stl 
+
+mkdir build 
+
+cd build
+
+cmake ..
+
+make
+```
+
+To run specific test:
+```
+./vector_tst 
+./heap_tst
+./stack_tst
+```
+
+Or 
+```
+./Tests
+```
+
+to run everything. Tests are written using Google Test. CMake automatically link the library to the program.
