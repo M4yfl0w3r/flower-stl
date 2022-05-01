@@ -33,4 +33,4 @@ Or
 ./Tests
 ```
 
-to run everything. Tests are written using Google Test. CMake automatically link the library to the program.
+to run everything. Tests were written using Google Test. CMake automatically link the library to the program.
