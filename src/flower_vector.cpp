@@ -28,10 +28,8 @@ Flower_Vector<T>::Flower_Vector(const Flower_Vector<T>& other)
 }
 
 template <typename T>
-Flower_Vector<T>::Flower_Vector(Flower_Vector<T>&& other) 
-  : size{other.size}, 
-    capacity{other.capacity}, 
-    flower_buffer{new T[other.size]}
+Flower_Vector<T>::Flower_Vector(Flower_Vector<T>&& other) noexcept
+  : size{other.size}, capacity{other.capacity}, flower_buffer{new T[other.size]}
 {
   other.flower_buffer = nullptr;
   other.size = 0;
@@ -62,25 +60,25 @@ Flower_Vector<T>::~Flower_Vector()
 }
 
 template<typename T>
-typename Flower_Vector<T>::iterator Flower_Vector<T>::begin()
+typename Flower_Vector<T>::iterator Flower_Vector<T>::begin() noexcept
 {
   return flower_buffer;
 }
 
 template<typename T>
-typename Flower_Vector<T>::const_iterator Flower_Vector<T>::const_begin() const
+typename Flower_Vector<T>::const_iterator Flower_Vector<T>::const_begin() const noexcept
 {
   return flower_buffer;
 }
 
 template<typename T>
-typename Flower_Vector<T>::iterator Flower_Vector<T>::end()
+typename Flower_Vector<T>::iterator Flower_Vector<T>::end() noexcept
 {
   return flower_buffer + size;
 }
 
 template<typename T>
-typename Flower_Vector<T>::const_iterator Flower_Vector<T>::const_end() const
+typename Flower_Vector<T>::const_iterator Flower_Vector<T>::const_end() const noexcept
 {
   return flower_buffer + size;
 }
@@ -104,7 +102,7 @@ std::size_t Flower_Vector<T>::flower_capacity() const
 }
 
 template <typename T>
-bool Flower_Vector<T>::flower_empty() const
+bool Flower_Vector<T>::flower_empty() const noexcept
 {
   return (size == 0);
 }
