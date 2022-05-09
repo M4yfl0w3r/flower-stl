@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 
-#include "../include/flower_heap.h"
+#include "../src/flower_heap.h"
 #include "../src/flower_heap.cpp"
 
 TEST(Constructor, OneArgumentConstructor)

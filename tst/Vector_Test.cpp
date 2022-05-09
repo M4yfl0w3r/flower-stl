@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 
-#include "../include/flower_vector.h"
+#include "../src/flower_vector.h"
 #include "../src/flower_vector.cpp"
 
 TEST(Constructors, OneArgumentConstructor)
@@ -157,6 +157,7 @@ TEST_F(VectorTest, Erase)
   v3.erase(v3.const_begin() + 2);
   EXPECT_FALSE(v3[2] == tmp);
 }
+
 
 int main(int argc, char* argv[])
 {

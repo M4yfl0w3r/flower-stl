@@ -1,4 +1,4 @@
-#include "../include/flower_stack.h"
+#include "flower_stack.h"
 
 template<typename T>
 void Stack<T>::push(T value)

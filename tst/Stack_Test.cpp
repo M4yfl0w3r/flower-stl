@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 
-#include "../include/flower_stack.h"
+#include "../src/flower_stack.h"
 #include "../src/flower_stack.cpp"
 
 TEST(CreateStack, IsEmptyInitially)
