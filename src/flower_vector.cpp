@@ -42,7 +42,7 @@ Flower_Vector<T>::Flower_Vector(std::initializer_list<T> l)
 {
   flower_realloc(capacity);
 
-  for (auto e : l)
+  for (T e : l)
   {
     flower_push_back(std::move(e));
   }
@@ -84,19 +84,19 @@ typename Flower_Vector<T>::const_iterator Flower_Vector<T>::const_end() const no
 }
 
 template <typename T>
-std::size_t Flower_Vector<T>::flower_size() const
+std::size_t Flower_Vector<T>::flower_size() const noexcept
 {
   return this -> size;
 }
 
 template <typename T>
-std::size_t Flower_Vector<T>::flower_max_size() const
+std::size_t Flower_Vector<T>::flower_max_size() const noexcept
 {
   return std::numeric_limits<T>::max();
 }
 
 template <typename T>
-std::size_t Flower_Vector<T>::flower_capacity() const
+std::size_t Flower_Vector<T>::flower_capacity() const noexcept
 {
   return this -> capacity;
 }
@@ -192,14 +192,13 @@ void Flower_Vector<T>::flower_push_back(T&& value)
     flower_realloc(capacity + capacity);
   }
  
-  //flower_buffer[size++] = std::move(value);
   flower_buffer[size++] = static_cast<T&&>(value);
 }
   
 template <typename T>
 void Flower_Vector<T>::flower_push_back(std::initializer_list<T>&& l)
 {
-  for (auto e : l)
+  for (T e : l)
   {
     flower_push_back(static_cast<T&&>(e));
   }
@@ -213,7 +212,7 @@ void Flower_Vector<T>::flower_emplace_back(std::initializer_list<T>&& l)
     flower_realloc(capacity + capacity);
   }
 
-  for (auto e : l)
+  for (const auto& e : l)
   {
     new (&flower_buffer[size++]) T(static_cast<T&&>(e));
   }

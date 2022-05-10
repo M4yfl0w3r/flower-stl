@@ -17,7 +17,7 @@ public:
 
 public: 
   Flower_Vector();
-  
+
   explicit Flower_Vector(T);
 
   Flower_Vector(const Flower_Vector<T>&);
@@ -27,17 +27,16 @@ public:
   ~Flower_Vector();
 
 public: 
-  iterator begin() noexcept;
-  iterator end() noexcept;
-  
-  const_iterator const_begin() const noexcept;
-  const_iterator const_end() const noexcept;
+  auto begin() noexcept -> iterator;
+  auto end() noexcept -> iterator; 
+  auto const_begin() const noexcept -> const_iterator;
+  auto const_end() const noexcept -> const_iterator;
 
 public: 
-  auto flower_size() const -> std::size_t; 
-  auto flower_max_size() const -> std::size_t;
-  auto flower_capacity() const -> std::size_t; 
-  bool flower_empty() const noexcept; 
+  auto flower_size() const noexcept -> std::size_t; 
+  auto flower_max_size() const noexcept -> std::size_t;
+  auto flower_capacity() const noexcept -> std::size_t; 
+  auto flower_empty() const noexcept -> bool; 
   auto flower_reserve(std::size_t) -> void;
   auto shrink_to_fit() -> void;
 
