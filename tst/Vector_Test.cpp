@@ -133,9 +133,10 @@ TEST_F(VectorTest, SingleElementPushBack)
 TEST_F(VectorTest, InitListPushBack)
 {
   int tmp = v2.flower_size();
-  v2.flower_push_back({1, 2, 3, 4});
+  v2.flower_push_back(1, 2, 3, 4);
   EXPECT_EQ(v2.flower_size(), tmp+4);
 }
+
 
 TEST_F(VectorTest, PopBack)
 {
@@ -157,7 +158,6 @@ TEST_F(VectorTest, Erase)
   v3.erase(v3.const_begin() + 2);
   EXPECT_FALSE(v3[2] == tmp);
 }
-
 
 int main(int argc, char* argv[])
 {

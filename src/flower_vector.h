@@ -11,6 +11,7 @@
 template<typename T> 
 class Flower_Vector
 {
+
 public:
   typedef T * iterator;
   typedef const T* const_iterator;
@@ -43,6 +44,10 @@ public:
 public: 
   auto flower_push_back(T&&) -> void;
   auto flower_push_back(std::initializer_list<T>&&) -> void;
+
+  template <typename ... Args>
+  auto flower_push_back(Args& ...) -> void;
+
   auto flower_emplace_back(std::initializer_list<T>&&) -> void;
   auto flower_pop_back() -> void;
   auto flower_clear() -> void;  

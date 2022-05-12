@@ -3,12 +3,9 @@
 template<typename T>
 void Stack<T>::push(T value)
 {
-    std::shared_ptr< Node<T> > new_node = std::make_shared< Node<T> >();
-
+  std::shared_ptr< Node<T> > new_node = std::make_shared< Node<T> >();
 	new_node -> element = value;
-
 	new_node -> next = top;
-
 	top = new_node;
 }
 
@@ -17,14 +14,10 @@ T Stack<T>::pop()
 {
 	if (top != NULL)
 	{
-      std::shared_ptr< Node<T> > tmp_top = top;
-
+    std::shared_ptr< Node<T> > tmp_top = top;
 		top = top -> next;
-
 		tmp_top -> next = NULL;
-	
 		T tmp_val = tmp_top -> element;
-
 		return tmp_val;
 	}
 
