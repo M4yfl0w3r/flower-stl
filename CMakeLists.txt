@@ -17,7 +17,7 @@ if (NOT googletest_POPULATED)
   add_subdirectory(${googletest_SOURCE_DIR} ${googletest_BUILD_DIR})
 endif()
 
-add_library(flower_stl STATIC src/flower_vector.cpp src/flower_stack.cpp)
+add_library(flower_stl STATIC src/flower_vector.cpp)
 
 add_executable(Tests tst/Vector_Test.cpp tst/Stack_Test.cpp tst/Heap_Test.cpp)
 target_link_libraries(Tests flower_stl gtest_main gmock_main)
