@@ -133,7 +133,7 @@ TEST_F(VectorTest, SingleElementPushBack)
 TEST_F(VectorTest, InitListPushBack)
 {
   int tmp = v2.flower_size();
-  v2.flower_push_back(1, 2, 3, 4);
+  v2.flower_push_back({ 1, 2, 3, 4 });
   EXPECT_EQ(v2.flower_size(), tmp+4);
 }
 

@@ -1,7 +1,6 @@
 #include <gtest/gtest.h>
 
 #include "../src/flower_heap.h"
-#include "../src/flower_heap.cpp"
 
 TEST(Constructor, OneArgumentConstructor)
 {
